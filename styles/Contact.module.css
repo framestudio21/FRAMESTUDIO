@@ -1,0 +1,453 @@
+.contactmainbody {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  user-select: none;
+  user-select: none;
+  padding: 0 30px 0 0;
+
+  .errorMessage {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: red;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: right;
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    padding: 1rem 2rem;
+  }
+
+  .popupwindow {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    .popupContent {
+      padding: 2rem;
+      background: #000;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 50px;
+      width: 40%;
+
+      .titlesection {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .title {
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          font-size: 40px;
+          font-weight: 700;
+        }
+
+        .icon {
+          font-size: 40px;
+          cursor: pointer;
+        }
+      }
+
+      .textbodysection {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+
+        .subtitle {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-weight: 600;
+          font-size: 20px;
+          text-align: center;
+
+          .subtexttitle {
+            text-transform: uppercase;
+            font-weight: 800;
+          }
+          .idtokenid {
+            text-transform: lowercase;
+          }
+        }
+      }
+
+      .donebtn {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        background: #ccc;
+        color: #000;
+        padding: 1rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 25px;
+        letter-spacing: 2px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+      .donebtn:hover{
+        background: #fff;
+      }
+    }
+  }
+
+  .btnblocks {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 1rem 0;
+
+    .sendbtn,
+    .resetbtn {
+      width: 100%;
+      padding: 1rem;
+      border: 2px dashed #ccc;
+      background: none;
+      text-transform: capitalize;
+      letter-spacing: 3px;
+      font-weight: 500;
+      font-size: 18px;
+      border-radius: 100px;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      -ms-border-radius: 100px;
+      -o-border-radius: 100px;
+      cursor: pointer;
+    }
+
+    .sendbtn {
+      background-color: #000;
+      color: #fff;
+      border: 2px solid #000;
+    }
+    .resetbtn:hover {
+      border: 2px solid #000;
+    }
+  }
+
+  .informationdivbody {
+    width: 30%;
+    background-color: #000;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+
+    .informationdiv {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      border-bottom: 2px dashed #ccc;
+      padding: 1rem 0;
+      color: #fff;
+
+      .icon {
+        font-size: 50px;
+        font-weight: 400;
+        color: #fff;
+      }
+
+      .textdiv {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .titlesection {
+          display: flex;
+          flex-direction: column;
+
+          .title {
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+          .subtitle {
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-size: 16px;
+            color: #ccc;
+          }
+        }
+        .email {
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+
+  .followlinks {
+    border-top: 2px dashed #fff;
+    padding: 1rem 0 0 0;
+    display: flex;
+    text-transform: uppercase;
+    flex-direction: column;
+    gap: 10px;
+
+    .title {
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .links {
+      flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .link {
+      border-bottom: 2px solid transparent;
+    }
+
+    .link:hover {
+      border-bottom: 2px solid #fff;
+    }
+  }
+
+  .formdivbody {
+    width: 68%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+    .titlesection {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 3px dashed #000;
+      padding: 0 0 1.5rem 0;
+      gap: 5px;
+
+      .title {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 50px;
+        letter-spacing: 2px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #7e7e7e;
+      }
+    }
+
+    .formsection {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .blocks {
+        width: 100%;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        .textinput,
+        .emailtextinput {
+          width: 100%;
+          padding: 1rem 2rem;
+          text-transform: capitalize;
+          letter-spacing: 2px;
+          font-weight: 500;
+          border-radius: 10px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          -o-border-radius: 10px;
+          outline: none;
+          border: 2px dashed #999;
+          font-size: 16px;
+          background: none;
+        }
+
+        .emailtextinput {
+          text-transform: lowercase;
+        }
+
+        .textinput::placeholder,
+        .emailtextinput::placeholder,
+        .textarea::placeholder {
+          text-transform: uppercase;
+          font-weight: 600;
+          color: #999;
+          font-size: 12px;
+        }
+
+        .textarea {
+          width: 100%;
+          outline: none;
+          border: 2px dashed #999;
+          padding: 1.5rem;
+          text-transform: capitalize;
+          letter-spacing: 2px;
+          font-weight: 500;
+          font-size: 16px;
+          height: 250px;
+          display: block;
+          border-radius: 10px;
+          resize: none;
+          color: #000;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          -o-border-radius: 10px;
+        }
+
+        .textarea:hover,
+        .textinput:hover,
+        .emailtextinput:hover {
+          border: 2px solid #000;
+          color: #000;
+        }
+
+        .textarea:focus,
+        .textinput:focus,
+        .emailtextinput:focus {
+          border: 2px solid #000;
+          color: #000;
+        }
+
+        .textarea::placeholder {
+          color: #ccc;
+        }
+      }
+
+      .radioblocks {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 1rem 0.3rem;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+
+        .title {
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+
+        .inputfield {
+          display: flex;
+          flex-wrap: wrap;
+          /* justify-content: space-between; */
+          align-items: center;
+          gap: 15px;
+
+          .radiodiv {
+            border: 2px dashed #999;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            color: #999;
+            font-weight: 700;
+
+            .radio {
+              width: 20px;
+              height: 20px;
+            }
+          }
+
+          .radiodiv:hover {
+            border: 2px solid #000;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  .contactmainbody{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    .informationdivbody{
+      width: 100%;
+      padding: 10px 10px;
+
+      .informationdiv{
+        display: none;
+      }
+
+      width: 100%;
+      .followlinks{
+        border: none;
+        padding: 0;
+      }
+        }
+    
+    .btnblocks{
+      flex-direction: column;
+    }
+
+    .formdivbody{
+      width: 100%;
+      padding: 10px 10px;
+
+      .formsection {
+
+        .blocks{
+          width: 100%;
+          flex-direction: column;
+        }
+
+        .radioblocks{
+          width: 100%;
+
+          .inputfield{
+            width: 100%;
+
+            .radiodiv{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

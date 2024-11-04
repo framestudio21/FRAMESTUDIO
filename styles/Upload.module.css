@@ -1,0 +1,576 @@
+.selectwindowsectiondiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem 1rem 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  .selectinputfield {
+    padding: 0.8rem 2rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+
+  .selectinputfield:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .selectinputfield:focus {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+.uploadstatusdiv {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.popupwindow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .uploadWindow,
+  .successWindow {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    height: 350px;
+    min-width: 600px;
+    /* max-width: 80%; */
+    width: 600px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+
+    .progresslinediv {
+      /* display: flex; */
+      /* justify-content: space-between; */
+      /* align-items: center; */
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 30px;
+      width: 100%;
+      gap: 10px;
+      text-align: center;
+      /* .progressBar {
+        background-color: #fff;
+        height: 20px;
+        border-radius: 10px;
+        transition: width 0.4s ease;
+        width: 85%;
+        border: 5px solid #fff;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      } */
+    }
+
+    .header {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 35px;
+      letter-spacing: 2px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .icon {
+        font-size: 35px;
+        cursor: pointer;
+      }
+    }
+
+    .subtext {
+      width: 100%;
+      font-size: 16px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .donebtn {
+      width: 100%;
+      border: 2px solid #fff;
+      outline: none;
+      text-transform: capitalize;
+      letter-spacing: 2px;
+      font-size: 20px;
+      padding: 0.9rem 1rem;
+      border-radius: 100px;
+      cursor: pointer;
+      font-weight: 700;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      -ms-border-radius: 100px;
+      -o-border-radius: 100px;
+      background: none;
+      color: #fff;
+    }
+    .donebtn:active{
+      background-color: #fff;
+      color: #000;
+    }
+    .donebtn:hover{
+      background-color: #fff;
+      color: #000;
+    }
+  }
+}
+
+.uploadmainbody,
+.editmainpagebody {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .uploadsectionbody {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+
+    .windowtitle {
+      padding: 1rem 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .blocks {
+      display: flex;
+      padding: 1rem 3rem 2rem 2rem;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+
+      .title {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      .inputfield {
+        padding: 1rem 2rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        outline: none;
+        border: 2px dashed #ccc;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+
+      .fileinputfield {
+        padding: 1rem 0;
+        font-weight: 600;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+
+      .fileinputfield::file-selector-button {
+        border: none;
+        padding: 1rem 2rem;
+        background-color: #000;
+        color: #fff;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        font-weight: 600;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+
+      .inputfield:hover {
+        border: 2px solid #000;
+        color: #000;
+      }
+
+      .inputfield:focus {
+        border: 2px solid #000;
+        color: #000;
+      }
+
+      .textarea {
+        padding: 1rem 2rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        outline: none;
+        border: 2px dashed #ccc;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        height: 200px;
+        width: 100%;
+        resize: none;
+      }
+
+      .textarea:hover {
+        border: 2px solid #000;
+        color: #000;
+      }
+
+      .textarea:focus {
+        border: 2px solid #000;
+        color: #000;
+      }
+
+      .submitbtn {
+        width: 100%;
+        padding: 0.7rem;
+        font-weight: 500;
+        cursor: pointer;
+        text-transform: capitalize;
+        outline: none;
+        border: 2px solid #ccc;
+        background: none;
+        letter-spacing: 2px;
+        font-size: 20px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+
+      .submitbtn:hover {
+        border: 2px solid #000;
+        background-color: #000;
+        color: #fff;
+      }
+
+      .reactquillinputfield {
+        width: 100%;
+        height: 700px;
+        z-index: 0;
+      }
+
+      .thumbnailpreview {
+        width: 100%;
+        height: 500px;
+        /* text-transform: uppercase; */
+        /* letter-spacing: 2px; */
+        /* font-weight: 600; */
+        display: flex;
+        /* gap: 10px; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .thumbnailimg {
+          /* margin: 0 auto; */
+          width: 100%, auto;
+          height: 100%, auto;
+          border-radius: 10px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          -o-border-radius: 10px;
+        }
+      }
+    }
+  }
+}
+
+.divtitle {
+  padding: 1rem;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 20px;
+  font-weight: 900;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.titleandsearchbar {
+  padding: 1rem 3rem 1rem 2rem;
+  width: 100%;
+  gap: 20px;
+  display: flex;
+
+  .searchbar {
+    width: 50%;
+    padding: 1rem 2.5rem;
+    outline: none;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: text;
+  }
+
+  .searchbar:hover {
+    border: 2px solid #000;
+  }
+  .searchbar:focus {
+    border: 2px solid #000;
+  }
+  .searchbar:active {
+    border: 2px solid #000;
+  }
+
+  .selectwindow {
+    width: 50%;
+    padding: 0.8rem 2rem;
+    border: 2px dashed #ccc;
+    outline: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+
+  .selectwindow:hover {
+    border: 2px solid #000;
+  }
+
+  .selectwindow:focus {
+    border: 2px solid #000;
+  }
+}
+
+.productdisplaymaindiv,
+.digitalartdisplaymaindiv,
+.photographydisplaymaindiv {
+  width: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  padding: 0 3rem 0 2rem;
+  gap: 10px;
+
+  .imagecard {
+    width: 100%;
+    padding: 1.5rem 0;
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid #ccc;
+
+    .imagelink {
+      width: 1000px;
+      height: 400px auto;
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+    }
+
+    .textbody {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: space-between;
+
+      .title {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 30px;
+        font-weight: 800;
+      }
+
+      .uniqueId {
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .description {
+        text-transform: capitalize;
+        text-align: justify;
+        font-size: 16px;
+      }
+
+      .btnsection {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .editbtn,
+      .deletebtn {
+        width: 50%;
+        background: none;
+        outline: none;
+        border: 2px dashed #ccc;
+        padding: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 900;
+        font-size: 20px;
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+        cursor: pointer;
+      }
+
+      .deletebtn {
+        border: 2px solid #999;
+        background-color: #999;
+        color: #fff;
+      }
+
+      .editbtn:hover,
+      .deletebtn:hover {
+        border: 2px solid #000;
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.editpageconfirmmodal {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modalContent {
+    background-color: #fff;
+    width: 40%;
+    height: 35%;
+    padding: 2rem;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+
+    .titlesection {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+
+      .title {
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 2px;
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .subtitle {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        color: #999;
+      }
+    }
+
+    .btnsection {
+      display: flex;
+      gap: 10px;
+
+      .confirmbtn,
+      .cancelbtn {
+        width: 100%;
+        background: none;
+        border: 2px solid transparent;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        border-radius: 100px;
+        padding: 1rem 0;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+      }
+
+      .cancelbtn:hover,
+      .confirmbtn:hover {
+        border: 2px solid #000;
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+}

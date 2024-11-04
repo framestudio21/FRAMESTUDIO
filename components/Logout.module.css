@@ -1,0 +1,51 @@
+.topnavbar {
+
+    display: flex;
+    padding: 1rem 3rem 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    gap: 30px;
+    background-color: #000;
+    color: #fff;
+
+  
+    .text {
+      text-transform: uppercase;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .btnsection{
+      display: flex;
+      gap: 20px;
+    }
+  
+    .logoutbtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 1rem 2rem;
+      outline: none;
+      border: none;
+      background: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      color: #fff;
+}
+  
+    .logoutbtn:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
