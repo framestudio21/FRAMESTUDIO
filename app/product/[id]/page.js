@@ -2,6 +2,7 @@
 
 "use client";
 
+import DOMPurify from "dompurify";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -69,26 +70,36 @@ export default function Id() {
 
   const getPrevNextData = async (mongoID, type) => {
     try {
-      const res = await fetch(
-        `/api/getFiles?currentID=${mongoID}&type=${type}`
+      // Fetch previous items
+      const prevRes = await fetch(
+        `/api/getFiles/getPrevFiles?currentID=${mongoID}&type=${type}`
       );
-      const result = await res.json();
-      if (result.error) {
-        console.error("Error fetching previous/next data:", result.error);
+      const prevResult = await prevRes.json();
+      // Fetch next items
+      const nextRes = await fetch(
+        `/api/getFiles/getNextFiles?currentID=${mongoID}&type=${type}`
+      );
+      const nextResult = await nextRes.json();
+      if (prevResult.error) {
+        // console.error("Error fetching previous data:", prevResult.error);
       } else {
-        setPrevItems(result.prevNav); // Update this to match your API response
-        setNextItems(result.nextNav); // Update this to match your API response
-        setCardPrevItems(result.cardPrev); // Capture card previous items
-        setCardNextItems(result.cardNext); // Capture card next items
+        setPrevItems(prevResult.prevNav);
+        setCardPrevItems(prevResult.cardPrev);
+      }
+      if (nextResult.error) {
+        // console.error("Error fetching next data:", nextResult.error);
+      } else {
+        setNextItems(nextResult.nextNav);
+        setCardNextItems(nextResult.cardNext);
       }
     } catch (error) {
-      console.error("Fetch error:", error);
+      console.error("Error fetching previous/next data:", error);
     }
   };
 
   const copyToClipboard = (e) => {
     e.stopPropagation();
-    const urlToCopy = `digitalart/query?s=${
+    const urlToCopy = `type=${encodeURIComponent(data?.type)}&${
       data?.uniqueID
     }&title=${encodeURIComponent(data?.title)}`;
     navigator.clipboard
@@ -107,11 +118,7 @@ export default function Id() {
     if (prefix.includes("png")) return "png";
     if (prefix.includes("jpeg")) return "jpeg";
     if (prefix.includes("svg")) return "svg+xml";
-    return "jpg"; // default to jpg if none found
-  }
-
-  function viewImage(imageUrl) {
-    window.open(imageUrl, "_blank");
+    return "webp"; // default to jpg if none found
   }
 
   // if (!data) {
@@ -202,15 +209,24 @@ export default function Id() {
           <div className={styles.producttypeowner}>
             <div className={styles.owner}>by sumit kumar duary</div>
             <div className={styles.type}>
-              <Link href={`/product/category/${data.category1}`} className={styles.typelink}>
+              <Link
+                href={`/product/category/${data.category1}`}
+                className={styles.typelink}
+              >
                 {data ? data.category1 : "Loading..."}
               </Link>
               ,
-              <Link href={`/product/category/${data.category2}`} className={styles.typelink}>
+              <Link
+                href={`/product/category/${data.category2}`}
+                className={styles.typelink}
+              >
                 {data ? data.category2 : "Loading..."}
               </Link>
               ,
-              <Link href={`/product/category/${data.category3}`} className={styles.typelink}>
+              <Link
+                href={`/product/category/${data.category3}`}
+                className={styles.typelink}
+              >
                 {data ? data.category3 : "Loading..."}
               </Link>
             </div>
@@ -220,25 +236,19 @@ export default function Id() {
           <div className={styles.bodydatadiv}>
             {data ? (
               <>
-                <div dangerouslySetInnerHTML={{ __html: data.details }} />
-                {/* Display the base64 image and allow zoom on click */}
+                <div className={styles.dataparagraph} dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(data.details),
+                  }} />
                 {data.base64Image && (
                   <Image
-                    className={styles.image}
-                    src={`data:image/${getImageFormat(
-                      data.base64Image
-                    )};base64,${data.base64Image}`}
+                    src={`data:image/${getImageFormat(data.base64Image)};base64,${data.base64Image}`}
                     alt={data.title}
-                    onClick={() =>
-                      viewImage(
-                        `data:image/${getImageFormat(
-                          data.base64Image
-                        )};base64,${data.base64Image}`
-                      )
-                    }
-                    style={{ cursor: "zoom-in" }}
-                    width={500}
-                    height={500}
+                    width={0}  // Setting width to 0 here since it's controlled via style
+                    height={0}  // Same for height, we'll use 'style' to control dimensions
+                    style={{
+                      width: "100%",   // Set width to 100% to fill the container
+                      height: "auto",  // Maintain the aspect ratio automatically
+                    }}
                   />
                 )}
               </>
@@ -260,75 +270,37 @@ export default function Id() {
 
           {/* prev & next product link */}
           <div className={styles.productlink}>
-            {prevItems.length > 0 && (
-              <>
-                {prevItems.map((item) => (
-                  <Link
-                    key={item.id}
-                    href={`/product/${item.type}+${item.id}+${item.uniqueID}+${item.title}`}
-                    className={styles.pagelink1}
-                  >
-                    <div>{"<"}</div>
-                    {item.title}
-                  </Link>
-                ))}
-                <div>:</div>
-              </>
+            {prevItems.length > 0 ? (
+              prevItems.map((item) => (
+                <Link
+                  key={item.id}
+                  href={`/product/${item.type}+${item.id}+${item.uniqueID}+${item.title}`}
+                  className={styles.pagelink1}
+                >
+                  <div>{"<"}</div>
+                  {item.title}
+                </Link>
+              ))
+            ) : (
+              <div>Loading previous items...</div>
             )}
 
-            {nextItems.length > 0 && (
-              <>
-                {nextItems.map((item) => (
-                  <Link
-                    key={item.id}
-                    href={`/product/${item.type}+${item.id}+${item.uniqueID}+${item.title}`}
-                    className={styles.pagelink2}
-                  >
-                    {item.title}
-                    <div>{">"}</div>
-                  </Link>
-                ))}
-              </>
+            {nextItems.length > 0 ? (
+              nextItems.map((item) => (
+                <Link
+                  key={item.id}
+                  href={`/product/${item.type}+${item.id}+${item.uniqueID}+${item.title}`}
+                  className={styles.pagelink2}
+                >
+                  {item.title}
+                  <div>{">"}</div>
+                </Link>
+              ))
+            ) : (
+              <div>Loading next items...</div>
             )}
           </div>
 
-          {/* card carousel body */}
-          {/* <div className={styles.cardcarouselbody}>
-            <div className={styles.cardcarouseltitle}>related body</div>
-            <div className={styles.cardcarousel}>
-            {[...cardprevItems, ...cardnextItems].map((item, index) => {
-                return (
-                  <>
-                    <div
-                      className={styles.cardbody}
-                      key={`${item.id}-${index}`}
-                    >
-                      <Image
-                        src={item.file}
-                        className={styles.cardimage}
-                        width={100}
-                        height={100}
-                        alt={item.title}
-                      />
-                      <div className={styles.cardtext}>
-                        <Link href="#" className={styles.cardtitle}>
-                          {item.title}
-                        </Link>
-                        {item.description && (
-                          <div className={styles.carddescription}>
-                            {item.description}
-                          </div>
-                        )}
-                        <Link href="#" className={styles.cardlink}>
-                          read more
-                        </Link>
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
-            </div>
-          </div> */}
           <div className={styles.cardcarouselbody}>
             <div className={styles.cardcarouseltitle}>Related Body</div>
             <div className={styles.cardcarousel}>
@@ -341,7 +313,7 @@ export default function Id() {
                     width={100}
                     height={100}
                     alt={item.title || "Item Image"}
-                    format="webp"
+                    // format="webp"
                     // Fallback alt text if title is missing
                   />
                   <div className={styles.cardtext}>

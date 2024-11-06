@@ -13,25 +13,22 @@ import styles from "@/styles/Error.module.css"
 
 export default function _error() {
 
-    const [searchText, setSearchText] = useState(""); // To hold the search text
-    const router = useRouter(); // To handle redirection
-    const inputRef = useRef(null); // Reference to the input field
+    const [searchText, setSearchText] = useState("");
+    const router = useRouter(); 
+    const inputRef = useRef(null);
   
     const handleSearch = (e) => {
-      e.preventDefault(); // Prevent page reload on form submit
+      e.preventDefault();
       if (searchText.trim()) {
-        // Redirect to the URL with the search query parameter
         router.push(`/search?query=${encodeURIComponent(searchText)}`);
       }
     };
   
     const handleContainerClick = () => {
-      // Focus on the input field when the searchbox div is clicked
       inputRef.current?.focus();
     };
 
     const handleBackClick = () => {
-        // Navigate back to the previous page
         router.back();
       };
 

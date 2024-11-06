@@ -1,8 +1,0 @@
-.taptotopbtn{
-    display: flex;
-    position: absolute;
-    right: 10px;
-    bottom: 20px;
-    color: red;
-    z-index: 99;
-}

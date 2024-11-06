@@ -5,34 +5,35 @@
   align-items: center;
   gap: 20px;
   height: 100vh;
+  width: 100%;
   background-color: #f8f5f2; /* Light beige background */
   overflow: hidden;
 
   .backbtn {
-    border: 2px solid #ccc;
+    border: none;
     padding: 1rem 2.5rem;
-    background: none;
+    background: #ccc;
     text-transform: capitalize;
     letter-spacing: 2px;
     font-weight: 500;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    -ms-border-radius: 50px;
-    -o-border-radius: 50px;
-  }
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
 
   .backbtn:hover{
     background-color: #000;
     color: #fff;
-    border: 2px solid #000;
+    border: none;
   }
 
   .searchboxdiv {
     background: white;
-    padding: 50px 100px;
+    padding: 50px 80px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
     border-radius: 10px; /* Rounded corners */
     width: 70%;
@@ -70,16 +71,16 @@
     gap: 20px;
     align-items: center;
     border: 2px dashed #ccc;
-    border-radius: 100px;
+    border-radius: 10px;
     padding: 15px 40px;
     width: 100%;
     margin: 0 auto;
     cursor: text;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    -ms-border-radius: 100px;
-    -o-border-radius: 100px;
-  }
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
 
   .searchbox:hover {
     border: 2px solid #ebebeb;

@@ -2,50 +2,16 @@
 
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import dynamic from "next/dynamic";
-
-// Dynamically import React-Quill without SSR
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
+import React, { useState, useEffect } from "react";
 
 import Navbar from "@/components/Navbar";
 import Layout from "@/components/PageLayout";
 import Logout from "@/components/Logout";
+import RichTextEditor from "@/components/RichTextEditor";
 
 import styles from "@/styles/Upload.module.css";
 
 export default function Upload() {
-  const quillRef = useRef(null);
-
-  const modules = {
-    toolbar: {
-      container: [
-        [{ header: "1" }, { header: "2" }, { font: [] }],
-        [{ size: [] }],
-        ["bold", "italic", "underline", "strike"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["link", "image"],
-        [{ align: [] }],
-        ["clean"],
-      ],
-    },
-  };
-
-  const formats = [
-    "header",
-    "font",
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "list",
-    "bullet",
-    "link",
-    "image",
-    "align",
-  ];
 
   const [formData, setFormData] = useState({
     type: "none",
@@ -225,8 +191,8 @@ export default function Upload() {
     <>
       <Navbar />
       <Layout>
-        <div className={styles.uploadmainbody}>
           <Logout />
+        <div className={styles.uploadmainbody}>
 
           {showUploadPopup && (
             <div className={styles.popupwindow}>
@@ -291,6 +257,7 @@ export default function Upload() {
           {uploadStatus && (
             <div className={styles.uploadstatusdiv}>{uploadStatus}</div>
           )}
+          
           <form className={styles.uploadsectionbody} onSubmit={handleSubmit}>
             <div className={styles.selectwindowsectiondiv}>
               <div className={styles.selectwindowsectiontitle}>
@@ -397,16 +364,11 @@ export default function Upload() {
 
                 <div className={styles.blocks}>
                   <div className={styles.title}>Product Details</div>
-                  <ReactQuill
-                    ref={quillRef}
-                    theme="snow"
-                    modules={modules}
-                    formats={formats}
-                    placeholder="Enter the product details"
-                    className={styles.reactquillinputfield}
+                  <RichTextEditor
                     value={formData.details}
+                    placeholder="Enter the product details"
                     onChange={(content) =>
-                      setFormData({ ...formData, details: content })
+                      setFormData((prevData) => ({ ...prevData, details: content }))
                     }
                   />
                 </div>

@@ -4,11 +4,23 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  padding: 0 42px 5px 5px;
+  padding: 0 52px 5px 5px;
 
   .imagecard {
-    height: 300px;
-    width: calc(100% / 4.1);
+    height: 220px;
+    width: calc(100% / 5.1);
+  }
+
+  .imagePreloader{
+    height: 100%;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
   }
 
   .imagebody {
@@ -67,6 +79,41 @@
   overflow-y: scroll;
 }
 
+@media only screen and (min-width: 1281px) {
+  .homemainbody{
+
+    .imagecard{
+      width: calc(100% / 5.1);
+    }
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .homemainbody{
+
+    .imagecard{
+      width: calc(100% / 4.1);
+    }
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .homemainbody{
+
+    .imagecard{
+      width: calc(100% / 3.1);
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .homemainbody{
+
+    .imagecard{
+      width: calc(100% / 2.1);
+    }
+  }
+}
 
 @media only screen and (max-width: 480px) {
   .homemainbody{
@@ -78,3 +125,4 @@
     }
   }
 }
+

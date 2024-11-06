@@ -3,8 +3,8 @@
 .copylink {
   position: absolute;
   top: 160px;
-  right: -100px;
-  /* z-index: 99; */
+  right: -90px;
+  z-index: 99;
   text-transform: uppercase;
   letter-spacing: 2px;
   transform: rotate(90deg);
@@ -43,9 +43,9 @@
 
 .socialmedialinkdiv {
   position: absolute;
-  bottom: 20px;
-  right: 30px;
-  /* z-index: 99; */
+  bottom: 5px;
+  right: 40px;
+  z-index: 99;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -63,7 +63,7 @@
 .backbtn {
   position: absolute;
   top: 75px;
-  left: 60px;
+  left: 50px;
   border: 2px solid #000;
   padding: 10px;
   display: flex;
@@ -75,7 +75,7 @@
   -ms-border-radius: 150px;
   -o-border-radius: 150px;
   cursor: pointer;
-  /* z-index: 999; */
+  z-index: 99;
 
   .icon {
     font-size: 28px;
@@ -94,7 +94,7 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 0 7rem 1rem 6rem;
+  padding: 0 7rem 1rem 5rem;
   transition: all 0.3s ease;
 
   .producttitle {
@@ -109,6 +109,8 @@
 
   .producttypeowner {
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     align-items: center;
     justify-content: space-between;
     letter-spacing: 2px;
@@ -123,6 +125,7 @@
 
     .type {
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
 
       .typelink {
@@ -141,18 +144,13 @@
     text-align: justify;
     font-weight: 500;
     width: 100%;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
 
-    .image {
+    .dataparagraph{
       width: 100%;
-      height: auto;
-      max-width: 600px; /* Ensure the image doesn't stretch too large */
-      max-height: 600px;
-      display: block;
-      transition: transform 0.2s ease;
-    }
-
-    .image:hover {
-      cursor: zoom-in;
     }
   }
 
@@ -161,14 +159,7 @@
     flex-direction: column;
     width: 100%;
     gap: 15px;
-    background-color: #000;
-    color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+
 
     .title {
       text-transform: uppercase;
@@ -189,14 +180,7 @@
     display: flex;
     gap: 20px;
     align-items: center;
-    background-color: #000;
-    color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+
 
     .title{
       text-transform: uppercase;
@@ -229,7 +213,7 @@
     .pagelink2 {
       display: flex;
       gap: 10px;
-      width: 50%;
+      width: 100%;
       font-weight: 600;
     }
 
@@ -344,7 +328,7 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1020px) {
   .idmainbody {
     padding: 0 4rem 1rem 3rem;
 
@@ -381,6 +365,43 @@
         justify-content: center;
       }
     }
+
+    .cardcarouselbody {
+      .cardcarousel {
+        flex-wrap: wrap;
+
+        .cardbody {
+          width: calc(100% / 2.1);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .idmainbody {
+    padding: 0 4rem 1rem 3rem;
+
+    .producturldiv {
+      flex-wrap: wrap;
+    }
+
+    .producttitle {
+      font-size: 50px;
+    }
+
+    .producttypeowner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+
+      .type {
+        flex-wrap: wrap;
+      }
+    }
+    .productlink {
+      flex-wrap: wrap;
+  }
 
     .cardcarouselbody {
       .cardcarousel {

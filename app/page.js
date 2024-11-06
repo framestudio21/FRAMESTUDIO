@@ -1,5 +1,3 @@
-//home.js
-
 "use client";
 
 import Link from "next/link";
@@ -12,25 +10,25 @@ import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/Navbar";
 import PreLoader from "@/components/Preloader";
 import PageLayout from "@/components/PageLayout";
+import { getDirectDriveLink } from "@/utils/getDirectDriveLink";
 
 export default function Home() {
+  const [productImages, setProductImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, []);
+  const [imageLoaded, setImageLoaded] = useState({});
 
-  const [productImages, setProductImages] = useState([]);
-
-  const fetchFiles = async (type, setState) => {
+  const fetchFiles = async (type) => {
     try {
       const response = await fetch(`/api/getFiles?type=${type}`);
       const data = await response.json();
       if (response.ok) {
-        setState(data);
+        setProductImages(
+          data.map((item) => ({
+            ...item,
+            src: getDirectDriveLink(item.file),
+          }))
+        );
       } else {
         console.error("Error fetching data:", data.error);
       }
@@ -40,14 +38,17 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchFiles("product", setProductImages);
+    fetchFiles("product");
+
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false); 
+    }, 10000); // 10 seconds
+
+    return () => clearTimeout(loadingTimer); 
   }, []);
 
-  const getDirectDriveLink = (fileLink) => {
-    const match = fileLink.match(/\/d\/(.*?)\//);
-    return match
-      ? `https://drive.google.com/uc?export=view&id=${match[1]}`
-      : fileLink;
+  const handleImageLoad = (id) => {
+    setImageLoaded((prev) => ({ ...prev, [id]: true }));
   };
 
   const renderProductDisplay = (images) => (
@@ -55,16 +56,22 @@ export default function Home() {
       {images.map((item) => (
         <div key={item._id} className={styles.imagecard}>
           {item.file && (
-            <Link href={`/product/${item.type}+${item._id}+${item.uniqueID}+${encodeURIComponent(item.title)}`}>
+            <Link
+              href={`/product/${item.type}+${item._id}+${item.uniqueID}+${encodeURIComponent(item.title)}`}
+            >
               <div className={styles.imagebody}>
+                {!imageLoaded[item._id] && (
+                  <div className={styles.imagePreloader}>Loading ...</div> // Placeholder while the image is loading
+                )}
                 <Image
-                  src={getDirectDriveLink(item.file)}
+                  src={item.src}
                   className={styles.image}
                   alt={item.title}
                   width={200}
                   height={250}
                   priority
-                  quality={60}
+                  onLoad={() => handleImageLoad(item._id)}
+                  // onLoadingComplete={() => handleImageLoad(item._id)} // Set image as loaded
                 />
                 <div className={styles.text}>
                   <br />
@@ -84,16 +91,21 @@ export default function Home() {
         <title>FRAME STUDIO</title>
         <meta
           name="description"
-          content="This page invites people to see, buy and contact with us for purpose of the art/desing/codding in graphic, website, ai art, digital art, photography"
+          content="This page invites people to see, buy and contact with us for purpose of the art/design/coding in graphic, website, AI art, digital art, photography"
         />
       </Head>
 
       <main>
-        {isLoading && <PreLoader />}
-        <Navbar />
-        <PageLayout>
-          {renderProductDisplay(productImages)}
-        </PageLayout>
+        {isLoading ? (
+          <PreLoader /> // Show preloader while loading
+        ) : (
+          <>
+            <Navbar />
+            <PageLayout>
+              {renderProductDisplay(productImages)} {/* Render the products when loading is done */}
+            </PageLayout>
+          </>
+        )}
       </main>
     </>
   );

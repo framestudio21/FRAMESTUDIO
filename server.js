@@ -6,7 +6,6 @@ import mongoose from 'mongoose';
 import { google } from 'googleapis';
 import dotenv from 'dotenv';
 
-// Load environment variables from .env.local
 dotenv.config();
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -27,11 +26,8 @@ const AUTH_PROVIDER_X509_CERT_URL = "https://www.googleapis.com/oauth2/v1/certs"
 const CLIENT_X509_CERT_URL = "https://www.googleapis.com/robot/v1/metadata/x509/frame-studio%40frame-studio-439515.iam.gserviceaccount.com"
 const UNIVERSE_DOMAIN = "googleapis.com"
 
-
 const server = express();
 
-
-// Function to check MongoDB connection
 async function checkMongoDBConnection() {
   try {
     if (mongoose.connection.readyState === 0) {
@@ -39,12 +35,12 @@ async function checkMongoDBConnection() {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
-      console.log('MongoDB is connected');
+      // console.log('MongoDB is connected');
     } else {
-      console.log('MongoDB is already connected');
+      // console.log('MongoDB is already connected');
     }
   } catch (error) {
-    console.error('MongoDB connection error:', error);
+    // console.error('MongoDB connection error:', error);
   }
 }
 
@@ -56,7 +52,7 @@ async function checkGoogleDriveConnection() {
         type: TYPE,
         project_id: PROJECT_ID,
         private_key_id: PRIVATE_KEY_ID,
-        private_key: PRIVATE_KEY.replace(/\\n/g, '\n'), // Make sure to format the key properly
+        private_key: PRIVATE_KEY.replace(/\\n/g, '\n'),
         client_email: CLIENT_EMAIL,
         client_id: CLIENT_ID,
         auth_uri: AUTH_URI,
@@ -75,38 +71,31 @@ async function checkGoogleDriveConnection() {
     });
 
     if (response.status === 200) {
-      console.log('Google Drive is connected');
+      // console.log('Google Drive is connected');
     } else {
-      console.error('Google Drive connection failed');
+      // console.error('Google Drive connection failed');
     }
   } catch (error) {
-    console.error('Google Drive connection error:', error);
+    // console.error('Google Drive connection error:', error);
   }
 }
 
-// Check both MongoDB and Google Drive connections
 async function checkConnections() {
   await checkMongoDBConnection();
   await checkGoogleDriveConnection();
 }
 
-// Call the checkConnections function on server start
-// checkConnections();
-
-// Middleware to handle Next.js requests
 server.all('*', (req, res) => {
   return handle(req, res);
 });
 
-// Start Next.js application
 app.prepare().then(() => {
-  // Check database connections before starting the server
   checkConnections().then(() => {
     server.listen(3000, (err) => {
       if (err) throw err;
       console.log('> Ready on http://localhost:3000');
     });
   }).catch((error) => {
-    console.error('Error starting the server:', error);
+    // console.error('Error starting the server:', error);
   });
 });

@@ -52,7 +52,6 @@ export default function AdminHome() {
         {images.map((item) => (
           <div key={item._id} className={styles.imagecard}>
             {item.file && (
-              <Link href={`/${item.type}/${item._id}`}>
                 <div className={styles.imagebody}>
                   <Image
                     src={getDirectDriveLink(item.file)} // Convert to direct link
@@ -70,7 +69,6 @@ export default function AdminHome() {
                     <p>{item.title}</p>
                   </div>
                 </div>
-              </Link>
             )}
           </div>
         ))}
@@ -82,8 +80,8 @@ export default function AdminHome() {
     <>
       <Navbar />
       <Layout>
-        <div className={styles.adminhomemainpage}>
           <Logout />
+        <div className={styles.adminhomemainpage}>
 
           {/* Product display sections */}
           {renderProductDisplay(productImages, "Product Display")}

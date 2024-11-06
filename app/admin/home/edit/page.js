@@ -182,6 +182,7 @@ export default function Edit() {
 
           <Logout />
 
+
           <div className={styles.titleandsearchbar}>
             <input
               type="text"
@@ -202,7 +203,7 @@ export default function Edit() {
               <option value="photography">Photography</option>
             </select>
           </div>
-
+          
         <div className={styles.editmainpagebody}>
 
           {selectedWindow === "product" && renderImages(productImages, "Product")}

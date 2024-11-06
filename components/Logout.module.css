@@ -1,13 +1,14 @@
 .topnavbar {
 
     display: flex;
-    padding: 1rem 3rem 1rem 2rem;
+    padding: 1rem 1rem 1rem 1rem;
     align-items: center;
     justify-content: space-between;
     user-select: none;
     gap: 30px;
     background-color: #000;
     color: #fff;
+    margin-right: 60px;
 
   
     .text {

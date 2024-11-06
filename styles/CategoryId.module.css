@@ -1,9 +1,39 @@
 .productcateogryidpagemainbody {
+
+  .highlight {
+    /* font-weight: bolder; */
+    /* font-size: 22px; */
+    /* color: rgb(72, 255, 0); */
+    font-weight: bolder;
+background: linear-gradient(104deg, rgba(130, 255, 173,0) 0.9%, rgba(130, 255, 173,1.25) 2.4%, rgba(130, 255, 173,0.5) 5.8%, rgba(130, 255, 173,0.1) 93%, rgba(130, 255, 173,0.7) 96%, rgba(130, 255, 1732,0) 98%), linear-gradient(183deg, rgba(130, 255, 173,0) 0%, rgba(130, 255, 173,0.3) 7.9%, rgba(130, 255, 173,0) 15%);
+padding: 3px 10px;
+box-decoration-break: clone;
+-webkit-box-decoration-break: clone;
+margin: 0;
+border-radius: 7.5px;
+text-shadow: -12px 12px 9.8px rgba(130, 255, 173,0.7), 21px -18.1px 7.3px rgba(255, 255, 255,1), -18.1px -27.3px 30px rgba(255, 255, 255,1);
+
+}
+  
   width: 100%;
+
+  .noproductmessage{
+    background: #000;
+    color: #fff;
+    padding: 1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
 
   .cardcontainermainbody {
     width: 100%;
-    padding: 1rem 15rem 1rem 14rem;
+    padding: 0 15rem 0 14rem;
 
     .cardcontainer {
       /* background-color: #ccc; */
@@ -26,6 +56,7 @@
 
       .ownerdatedetails {
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
         align-items: center;
         text-transform: uppercase;
@@ -43,6 +74,7 @@
 
         .categorydiv {
           display: flex;
+        flex-wrap: wrap;
           gap: 10px;
 
           .category:hover {
@@ -63,11 +95,22 @@
         letter-spacing: 1px;
         text-align: justify;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 20;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        .title{
+          text-transform: uppercase;
+        font-weight: 800;
+        font-size: 20px;
+        }
       }
     }
   }
+}
+
+
+@media only screen and (max-width: 480px){
+
 }

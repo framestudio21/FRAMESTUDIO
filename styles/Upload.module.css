@@ -1,3 +1,10 @@
+.image {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+}
+
 .selectwindowsectiondiv {
   display: flex;
   align-items: center;
@@ -9,7 +16,7 @@
 
   .selectinputfield {
     padding: 0.8rem 2rem;
-    border: none;
+    border: 2px dashed #000;
     outline: none;
     border-radius: 10px;
     text-transform: uppercase;
@@ -23,11 +30,13 @@
 
   .selectinputfield:hover {
     background-color: #000;
+    border: 2px dashed #000;
     color: #fff;
   }
 
   .selectinputfield:focus {
     background-color: #000;
+    border: 2px dashed #000;
     color: #fff;
   }
 }
@@ -47,7 +56,7 @@
   right: 0;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99;
   display: flex;
@@ -154,9 +163,11 @@
 
 .uploadmainbody,
 .editmainpagebody {
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  padding: 0 32px 0 0;
 
   .uploadsectionbody {
     overflow-y: scroll;

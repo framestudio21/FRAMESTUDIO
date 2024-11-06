@@ -189,8 +189,8 @@ export default function AdminContact() {
     <>
       <Navbar />
       <Layout>
-        <div className={styles.admincontactmainbody}>
           <Logout />
+        <div className={styles.admincontactmainbody}>
           <div className={styles.contactbody}>
             <div className={styles.mainpagetitle}>contact data</div>
             {error && <div className={styles.errorMessage}>{error}</div>}
@@ -200,7 +200,7 @@ export default function AdminContact() {
                 <>
                  {/* Incomplete Contacts */}
             <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Incomplete Projects</h2>
+              <h2 className={styles.sectionTitleIncomplete}>Incomplete Projects</h2>
               {incompleteContacts.length === 0 ? (
                 <div className={styles.nodatafound}>No incomplete contacts found.</div>
               ) : (
@@ -220,7 +220,7 @@ export default function AdminContact() {
 
             {/* Completed Contacts */}
             <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Completed Status</h2>
+              <h2 className={styles.sectionTitleComplete}>Completed Status</h2>
               {completeContacts.length === 0 ? (
                 <div className={styles.nodatafound}>No completed contacts found.</div>
               ) : (
