@@ -121,6 +121,16 @@ export default function Id() {
     return "webp"; // default to jpg if none found
   }
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      weekday: "short",  // Mon, Tue, etc.
+      month: "short",    // Jan, Feb, etc.
+      day: "numeric",    // 1, 2, ..., 31
+      year: "numeric",   // 2024, etc.
+    });
+  };
+
   // if (!data) {
   //   return <>{isLoading && <PreLoader />}</>;
   // }
@@ -207,7 +217,7 @@ export default function Id() {
           </div>
 
           <div className={styles.producttypeowner}>
-            <div className={styles.owner}>by sumit kumar duary</div>
+            <div className={styles.owner}>by sumit kumar duary : <span className={styles.date}>{data ? formatDate(data.uploadedAt) : "Loading..."}</span></div>
             <div className={styles.type}>
               <Link
                 href={`/product/category/${data.category1}`}
@@ -249,6 +259,7 @@ export default function Id() {
                       width: "100%",   // Set width to 100% to fill the container
                       height: "auto",  // Maintain the aspect ratio automatically
                     }}
+                    layout="responsive"
                   />
                 )}
               </>

@@ -36,7 +36,9 @@ function Gallery({ images }) {
   const copyToClipboard = (e) => {
     e.stopPropagation();
     const image = images[currentIndex];
-    const urlToCopy = `digitalart/${encodeURIComponent(
+    const urlToCopy = `${encodeURIComponent(
+      image.type
+    )}+${encodeURIComponent(
       image._id
     )}+${encodeURIComponent(image.uniqueID)}=${encodeURIComponent(
       image.title
